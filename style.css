@@ -94,6 +94,7 @@ nav a {
     margin: 20px 0;
     color: #856404;
     border-radius: 4px;
+    font-weight: bold; /* Усиливаем внимание к примечаниям */
 }
 
 ul, ol {
@@ -115,18 +116,19 @@ hr {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    font-size: 0.95em; /* Делаем шрифт в таблице чуть меньше */
 }
 
 .quiz-table th, .quiz-table td {
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 10px; /* Уменьшаем отступы */
     text-align: left;
 }
 
 .quiz-table th {
     background-color: #0056b3;
     color: white;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .quiz-table tr:nth-child(even) {
@@ -134,17 +136,23 @@ hr {
 }
 
 .quiz-table td:last-child {
-    width: 80px; /* Для колонки Да/Нет */
+    width: 80px;
     text-align: center;
+    background-color: #e9ecef; /* Выделяем колонку для ответов */
 }
 
 /* Стили для формы опроса/заполнения (пустые строки) */
-section p:has(strong) + ol li {
-    height: 1.5em; /* Чтобы пустые строки были заметны */
+section p + ol li {
+    min-height: 1.5em; 
     border-bottom: 1px dashed #ccc;
     margin-bottom: 15px;
-    list-style-type: none;
+    list-style-type: decimal;
     padding-left: 0;
+}
+
+/* Стилизация текста в цитатах/ответах на вопросы (для жирного) */
+strong {
+    font-weight: bold;
 }
 
 .phase {
