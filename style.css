@@ -1,0 +1,155 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    border-bottom: 3px solid #0056b3;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #0056b3;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    font-size: 1.6em;
+}
+
+h3 {
+    color: #343a40;
+    margin-top: 25px;
+    font-size: 1.3em;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin: 15px 0;
+}
+
+.intro {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-top: 20px;
+    color: #555;
+}
+
+nav h2 {
+    border: none;
+    margin-top: 0;
+    color: #0056b3;
+    font-size: 1.4em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+nav li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+nav a {
+    font-weight: bold;
+}
+
+.note {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    margin: 20px 0;
+    color: #856404;
+    border-radius: 4px;
+}
+
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 40px 0;
+}
+
+.quiz-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.quiz-table th, .quiz-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.quiz-table th {
+    background-color: #0056b3;
+    color: white;
+    font-weight: normal;
+}
+
+.quiz-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.quiz-table td:last-child {
+    width: 80px; /* Для колонки Да/Нет */
+    text-align: center;
+}
+
+/* Стили для формы опроса/заполнения (пустые строки) */
+section p:has(strong) + ol li {
+    height: 1.5em; /* Чтобы пустые строки были заметны */
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 15px;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.phase {
+    margin-left: 20px;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;
+    margin-bottom: 30px;
+}
