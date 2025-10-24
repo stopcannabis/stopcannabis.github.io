@@ -35,6 +35,6 @@ Email для связи: [jab-blaming-senior@duck.com](mailto:jab-blaming-senior
 
 ## Donate
 
-bitcoin: `bc1qccvqhmk650lvur52qsphnyhg569nrngzac4nck` 
-ton: `UQCb4bzmAcikNrdj4H6AviDTsuK2Sfd022Me9ZBOsTs_9NAx`
-monero: `2oh2bHrnznyWPvZDQWH9g55yvaD9VH7HpTxzGVWZQgSW`
+bitcoin: `bc1qccvqhmk650lvur52qsphnyhg569nrngzac4nck`<br>
+ton: `UQCb4bzmAcikNrdj4H6AviDTsuK2Sfd022Me9ZBOsTs_9NAx`<br>
+monero: `2oh2bHrnznyWPvZDQWH9g55yvaD9VH7HpTxzGVWZQgSW`<br>
