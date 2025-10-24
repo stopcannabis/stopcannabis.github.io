@@ -8,9 +8,10 @@ body {
 }
 
 .container {
+    width: 80%;
     max-width: 900px;
-    margin: 40px auto;
-    padding: 20px 30px;
+    margin: 0 auto;
+    padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -19,7 +20,7 @@ body {
 header {
     border-bottom: 3px solid #2e8b57; /* Темно-зеленый */
     padding-bottom: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -238,4 +239,31 @@ strong {
 
 .footer-notes a {
     color: #495057; /* Делаем ссылки чуть темнее, чтобы они были читаемы на сером фоне */
+}
+
+.header-links {
+    display: flex; /* Активируем Flexbox */
+    justify-content: space-between; /* Распределяем содержимое по краям (лево и право) */
+    align-items: flex-start; /* Выравнивание по верху */
+    width: 100%;
+    margin-bottom: 5px; /* Небольшой отступ перед заголовком H1 */
+}
+
+.contact-link p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.85em; /* Делаем ссылку чуть меньше */
+}
+
+.guide-links {
+    /* Контейнер для PDF/YouTube ссылок */
+    text-align: right;
+}
+
+/* Используем ранее созданный класс, но убеждаемся, что он работает в новом контексте */
+.header-link {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    text-align: right; 
 }
