@@ -474,75 +474,92 @@
     </div>
 <script>
 document.getElementById('saveAnswersBtn').addEventListener('click', function() {
-    let results = "== Ответы из Руководства по отказу от употребления марихуаны и гашиша (https://stopcannabis.github.io) ==\n\n";
+    let results = "== Ответы из Руководства по отказу от употребления марихуаны и гашиша (https://stopcannabis.github.io) ==\n";
+    results += "Дата сохранения: " + new Date().toLocaleDateString('ru-RU') + "\n\n";
+
     let allInputs = document.querySelectorAll('input[type="text"], input[type="radio"]');
+    let currentSectionTitle = '';
     
-    // Перебираем все поля ввода и радиокнопки
     allInputs.forEach(input => {
-        let labelText = '';
-        let sectionTitle = '';
+        let question = '';
         let answer = '';
         
-        // 1. Определяем заголовок секции для контекста
-        let currentSection = input.closest('section');
-        if (currentSection) {
-            let h2 = currentSection.querySelector('h2');
-            sectionTitle = h2 ? h2.textContent.trim() : 'Неопределенный раздел';
+        // 1. Обновление заголовка секции (H2) для форматирования
+        let section = input.closest('section');
+        if (section) {
+            let h2 = section.querySelector('h2');
+            let h2Text = h2 ? h2.textContent.trim() : 'Неизвестный раздел';
+
+            if (h2Text !== currentSectionTitle) {
+                currentSectionTitle = h2Text;
+                results += `\n[ ${currentSectionTitle.toUpperCase()} ]\n\n`;
+            }
         }
 
-        // 2. Получаем метку/вопрос для поля
-        if (input.type === 'text') {
-            // Для текстовых полей ищем ближайшую метку или используем aria-label
-            let closestLi = input.closest('li');
-            if (closestLi) {
-                // Если внутри <li>, берем текст из него (до/после поля)
-                labelText = closestLi.textContent.replace(input.value, '').trim();
-            } else if (input.classList.contains('inline')) {
-                // Для inline-полей берем текст из родительского <p> или <li>
-                let parentElement = input.parentNode;
-                labelText = parentElement.textContent.replace(input.value, '').trim();
-            }
-            // Используем aria-label как запасной вариант
-            if (!labelText && input.getAttribute('aria-label')) {
-                labelText = input.getAttribute('aria-label');
-            }
-            
-            // Получаем ответ
+        // 2. Обработка текстовых полей
+        if (input.type === 'text' && input.value.trim() !== '') {
             answer = input.value.trim();
-            if (answer) {
-                results += `[${sectionTitle}] ${labelText || 'Текстовое поле'}: ${answer}\n`;
+            let container = input.closest('li') || input.parentNode;
+            
+            if (input.closest('ol')) {
+                // Вопросы в нумерованных списках (Причины курить/бросить/условия)
+                // Используем aria-label для точного вопроса
+                question = input.getAttribute('aria-label') || 'Текстовый ответ:';
+                
+            } else {
+                // Вопросы "Ответ: [поле]"
+                // Чистим текст родителя от слова "Ответ:" и самого ответа
+                question = container.textContent.trim().replace('Ответ:', '').replace(answer, '').trim();
             }
             
-        } else if (input.type === 'radio' && input.checked) {
-            // Для радиокнопок ('Да/Нет' в таблицах)
+            // Чистка и форматирование вопроса
+            if (question.endsWith(':')) {
+                question = question.slice(0, -1);
+            }
+            if (question.endsWith('.')) {
+                question = question.slice(0, -1);
+            }
+            
+            results += `${question}: ${answer}\n`;
+            
+        } 
+        
+        // 3. Обработка радиокнопок (Да/Нет)
+        else if (input.type === 'radio' && input.checked) {
             let row = input.closest('tr');
             if (row) {
-                // Получаем текст симптома из первой колонки
+                // Берем текст вопроса из первой ячейки <td>
                 let symptomCell = row.querySelector('td:first-child');
-                labelText = symptomCell ? symptomCell.textContent.trim() : 'Вопрос викторины';
+                question = symptomCell ? symptomCell.textContent.trim() : 'Вопрос викторины';
+                
+                // Получаем ответ (Да/Нет)
+                let selectedLabel = row.querySelector(`label[for="${input.id}"]`);
+                answer = selectedLabel ? selectedLabel.textContent.trim() : input.value;
+                
+                // Чистка и форматирование вопроса
+                if (question.startsWith('Что ')) {
+                    question = question.substring(4);
+                }
+                if (question.endsWith('?')) {
+                    question = question.slice(0, -1);
+                }
+
+                results += `${question}?: ${answer}\n`;
             }
-            
-            // Получаем ответ (Да/Нет)
-            let selectedLabel = row.querySelector(`label[for="${input.id}"]`);
-            answer = selectedLabel ? selectedLabel.textContent.trim() : input.value;
-            
-            results += `[${sectionTitle}] ${labelText}: ${answer}\n`;
         }
     });
 
-    // 3. Создаем и скачиваем файл
-    const filename = "stopcannabis.github.io_answers.txt";
-    const blob = new Blob([results], { type: 'text/plain' });
+    // 4. Создаем и скачиваем файл
+    const filename = "answers.txt"; // Используйте "stopcannabis.github.io_answers.txt" если хотите старое имя
+    const blob = new Blob([results], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     
-    // Создаем невидимую ссылку для скачивания
     const a = document.createElement('a');
     a.href = url;
     a.download = filename;
     document.body.appendChild(a);
     a.click();
     
-    // Очищаем
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     
