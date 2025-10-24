@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 95%;
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
@@ -22,16 +22,6 @@ header {
     padding-bottom: 20px;
     margin-bottom: 20px;
     text-align: center;
-}
-
-.pdf-link {
-    text-align: right;
-    font-size: 0.9em;
-    margin-bottom: 10px;
-}
-
-.pdf-link a {
-    color: #28a745; /* Зеленый цвет для выделения ссылки на PDF */
 }
 
 h1 {
