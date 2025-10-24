@@ -550,7 +550,7 @@ document.getElementById('saveAnswersBtn').addEventListener('click', function() {
     });
 
     // 4. Создаем и скачиваем файл
-    const filename = "answers.txt"; // Используйте "stopcannabis.github.io_answers.txt" если хотите старое имя
+    const filename = "stopcannabis.github.io_answers.txt"; // Используйте "stopcannabis.github.io_answers.txt" если хотите старое имя
     const blob = new Blob([results], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     
