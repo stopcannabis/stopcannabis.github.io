@@ -140,7 +140,6 @@ hr {
 
 section p + ol li {
     min-height: 1.5em; 
-    border-bottom: 1px dashed #ccc;
     margin-bottom: 15px;
     list-style-type: decimal;
     padding-left: 0;
@@ -155,4 +154,88 @@ strong {
     padding-left: 15px;
     border-left: 3px solid #90ee90; /* Светло-зеленый для фаз */
     margin-bottom: 30px;
+}
+
+/* style.css (Добавьте в конце файла) */
+
+/* Группа для радиокнопок, чтобы они стояли в ряд */
+.radio-group {
+    display: flex;
+    justify-content: space-around; /* Равное распределение места */
+    align-items: center;
+    width: 100%;
+}
+
+/* Уменьшаем шрифт и отступы в label, чтобы уместить "Да" и "Нет" */
+.radio-group label {
+    font-size: 0.8em;
+    margin-left: 2px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Скрываем стандартные радиокнопки, если хотите стилизовать их сами,
+   иначе просто уменьшаем их размер */
+.radio-group input[type="radio"] {
+    transform: scale(0.8);
+    cursor: pointer;
+}
+
+/* Дополнительно уменьшаем ширину ячейки с ответом, если хотите сэкономить место */
+.quiz-table td:last-child {
+    width: 100px; /* Увеличиваем немного, чтобы уместить "Да" и "Нет" */
+    text-align: center;
+    background-color: #e9ecef;
+}
+
+
+.fill-in-field {
+    width: 90%; /* Занимает большую часть ширины */
+    padding: 5px 8px;
+    margin: 2px 0;
+    
+    /* Ключевые изменения для удаления пунктира: */
+    border: 1px solid #ccc; /* Установите простую сплошную тонкую рамку */
+    border-bottom: 1px solid #ccc !important; /* Гарантирует сплошную нижнюю границу */
+    background-color: white; /* Гарантирует белый фон */
+    text-decoration: none; /* Убирает любое подчеркивание текста */
+    /* Конец ключевых изменений */
+    
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Дополнительный стиль для полей, которые находятся прямо в строке с текстом */
+.fill-in-field.inline {
+    width: auto; /* Позволяет полю быть поменьше */
+    min-width: 150px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+
+/* Убедиться, что поля в списке выглядят как отдельный элемент */
+#pochemu-upotreblyayu ol li input, 
+#zachem-brosat ol li input {
+    margin-top: 5px; 
+    margin-bottom: 5px;
+}
+
+/* Стили для блока с информацией об авторах и ссылками */
+.footer-notes {
+    color: #6c757d; /* Серый цвет текста */
+    font-size: 0.9em; /* Уменьшенный размер шрифта (90% от базового) */
+    margin-top: 30px; /* Дополнительный отступ сверху, чтобы отделить от основного текста */
+    padding-top: 20px;
+    border-top: 1px dashed #e9ecef; /* Небольшой разделитель, если нужен */
+}
+
+.footer-notes ol,
+.footer-notes p {
+    margin-bottom: 5px; /* Уменьшаем отступ между параграфами внутри этого блока */
+}
+
+.footer-notes a {
+    color: #495057; /* Делаем ссылки чуть темнее, чтобы они были читаемы на сером фоне */
 }
