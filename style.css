@@ -23,10 +23,20 @@ header {
     text-align: center;
 }
 
+.pdf-link {
+    text-align: right;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.pdf-link a {
+    color: #28a745; /* Зеленый цвет для выделения */
+}
+
 h1 {
     color: #0056b3;
     font-size: 2.2em;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 h2 {
@@ -52,17 +62,14 @@ a:hover {
     text-decoration: underline;
 }
 
-.contact-info {
-    font-size: 0.9em;
-    color: #6c757d;
-    margin: 15px 0;
-}
-
-.intro {
-    font-style: italic;
-    font-size: 1.1em;
-    margin-top: 20px;
-    color: #555;
+.note {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    margin: 20px 0;
+    color: #856404;
+    border-radius: 4px;
+    font-weight: bold;
 }
 
 nav h2 {
@@ -87,16 +94,6 @@ nav a {
     font-weight: bold;
 }
 
-.note {
-    background-color: #fff3cd;
-    border-left: 5px solid #ffc107;
-    padding: 15px;
-    margin: 20px 0;
-    color: #856404;
-    border-radius: 4px;
-    font-weight: bold; /* Усиливаем внимание к примечаниям */
-}
-
 ul, ol {
     padding-left: 20px;
 }
@@ -116,12 +113,12 @@ hr {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 0.95em; /* Делаем шрифт в таблице чуть меньше */
+    font-size: 0.95em;
 }
 
 .quiz-table th, .quiz-table td {
     border: 1px solid #ddd;
-    padding: 10px; /* Уменьшаем отступы */
+    padding: 10px;
     text-align: left;
 }
 
@@ -138,10 +135,9 @@ hr {
 .quiz-table td:last-child {
     width: 80px;
     text-align: center;
-    background-color: #e9ecef; /* Выделяем колонку для ответов */
+    background-color: #e9ecef;
 }
 
-/* Стили для формы опроса/заполнения (пустые строки) */
 section p + ol li {
     min-height: 1.5em; 
     border-bottom: 1px dashed #ccc;
@@ -150,7 +146,6 @@ section p + ol li {
     padding-left: 0;
 }
 
-/* Стилизация текста в цитатах/ответах на вопросы (для жирного) */
 strong {
     font-weight: bold;
 }
