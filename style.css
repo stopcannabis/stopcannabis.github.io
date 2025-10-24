@@ -3,7 +3,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
+    background-color: #f4f7f6; /* Светло-серый фон */
     color: #333;
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 header {
-    border-bottom: 3px solid #0056b3;
+    border-bottom: 3px solid #2e8b57; /* Темно-зеленый */
     padding-bottom: 20px;
     margin-bottom: 30px;
     text-align: center;
@@ -30,17 +30,17 @@ header {
 }
 
 .pdf-link a {
-    color: #28a745; /* Зеленый цвет для выделения */
+    color: #28a745; /* Зеленый цвет для выделения ссылки на PDF */
 }
 
 h1 {
-    color: #0056b3;
+    color: #1e8449; /* Еще более темный зеленый */
     font-size: 2.2em;
     margin-bottom: 0;
 }
 
 h2 {
-    color: #007bff;
+    color: #27ae60; /* Изумрудно-зеленый */
     border-bottom: 2px solid #ddd;
     padding-bottom: 5px;
     margin-top: 30px;
@@ -48,13 +48,13 @@ h2 {
 }
 
 h3 {
-    color: #343a40;
+    color: #343a40; /* Темно-серый */
     margin-top: 25px;
     font-size: 1.3em;
 }
 
 a {
-    color: #007bff;
+    color: #3cb371; /* Средний морской зеленый */
     text-decoration: none;
 }
 
@@ -63,11 +63,11 @@ a:hover {
 }
 
 .note {
-    background-color: #fff3cd;
-    border-left: 5px solid #ffc107;
+    background-color: #d4edda; /* Светло-зеленый фон для заметки */
+    border-left: 5px solid #28a745; /* Темно-зеленый бордюр */
     padding: 15px;
     margin: 20px 0;
-    color: #856404;
+    color: #155724; /* Очень темно-зеленый текст */
     border-radius: 4px;
     font-weight: bold;
 }
@@ -75,7 +75,7 @@ a:hover {
 nav h2 {
     border: none;
     margin-top: 0;
-    color: #0056b3;
+    color: #1e8449; /* Темно-зеленый */
     font-size: 1.4em;
 }
 
@@ -123,7 +123,7 @@ hr {
 }
 
 .quiz-table th {
-    background-color: #0056b3;
+    background-color: #2e8b57; /* Темно-зеленый */
     color: white;
     font-weight: bold;
 }
@@ -153,6 +153,6 @@ strong {
 .phase {
     margin-left: 20px;
     padding-left: 15px;
-    border-left: 3px solid #ccc;
+    border-left: 3px solid #90ee90; /* Светло-зеленый для фаз */
     margin-bottom: 30px;
 }
