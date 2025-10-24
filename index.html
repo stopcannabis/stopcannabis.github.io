@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <header>
+        <section id="begin"></section>
 		<div class="header-links">
 			<div class="contact-link">
 			    <p>Связь с автором сайта: <a href="mailto:jab-blaming-senior@duck.com">jab-blaming-senior@duck.com</a></p>
@@ -18,15 +19,16 @@
 			    <p class="header-link">
 				<strong><a href="https://stopcannabis.github.io/marijuana_guide_rus.pdf" target="_blank">PDF-версия руководства</a></strong>
 			    </p>
-			    <p class="header-link">
-				<strong><a href="https://youtu.be/ue2jHFgH9W4?t=204" target="_blank">Аудио-версия руководства на Youtube</a></strong>
-			    </p>
 			</div>
 		    </div>
 		
             <h1>Руководство по отказу от употребления марихуаны и гашиша</h1>
         </header>
-
+        <div>
+        Данное руководство является интерактивным! Ты можешь отвечать на вопросы, используя приведённые текстовые поля и выбирая те или иные ответы в вопросах, а <a href="#end">в конце страницы</a> имеется кнопка <b>Сохранить ответы в файл</b>. При нажатии на эту кнопку текст вопросов и твои ответы на них будут сохранены в текстовый файл <b>stopcannabis.github.io_answers.txt</b> на твоём устройстве. Позже можно будет вернуться к ним, перечитать, проанализировать и переосмыслить всё ещё раз. Либо, поделиться ответами с теми кому доверяшь, обсудить.<br><br>
+        Внимание: твои ответы никуда не пересылаются!<br><br>
+        Исходный код проекта открыт и находится по адресу <a href="https://github.com/stopcannabis/stopcannabis.github.io">https://github.com/stopcannabis/stopcannabis.github.io</a>.
+        </div><br>
         <nav>
             <h2>Содержание:</h2>
             <ul>
@@ -462,18 +464,90 @@
                 </ul>
                 <p>Этот проверочный список основан на данных, полученных от хронических курильщиков конопли, которые обратились за помощью и воздерживались от употребления более шести недель. Данное руководство поможет тебе, если ты всерьез решил отказаться от марихуаны и гашиша.</p>
                 <p class="note"><strong>Если ты не можешь воздержаться от употребления, или начал употреблять снова, или плохо себя чувствуешь, обратись в центр лечения наркозависимости по месту жительства.</strong></p>
-	<div class="footer-notes">
-			<p>Данное руководство написано штатными сотрудниками совместно с пациентами Центра лечения наркозависимости при Университетском госпитале г. Лунд, Швеция. Оригинальная идея: Национальный центр по исследованию наркотиков и алкоголя, Университет г. Нью Саус Уэльс, Австралия.</p>
-			
-			<p>Те, кто заинтересован в получении дополнительной информации о конопле и ее воздействии на организм, могут прочитать:</p>
-			<ol>
-			    <li><em>Cognitive dysfunctions in chronic cannabis users observed during treatment, an integrative approach</em>, Thomas Lundqvist, Almqvist & Wiksell International, Stockholm Sweden, 1995.</li>
-			    <li><em>The health and psychological consequences of cannabis use, National Drug Strategy Monograph Series No. 25</em>, Wayne Hall, Nadia Solowij and Jim Lemon, National Drug and Alcohol Research Centre, Sidney, Australia, 1994.</li>
-			</ol>
-			<p><strong>Адрес для справок:</strong> Rådgivningsbyrån i narkotikafrågor, Kyrkogatan 19, S-222 22 Lund, Sweden, Phone + 46 46 174955, Fax + 46 46 152511, Email <a href="mailto:thomas.lundqvist@neurokemi.lu.se">thomas.lundqvist@neurokemi.lu.se</a></p>
-		</div>
             </section>
+            <section id="end"></section>
         </main>
+	    <div style="text-align: center; margin: 40px 0;">
+		<button id="saveAnswersBtn">Сохранить ответы в файл</button>
+	    </div>
+        <a href="#begin">Перейти на начало страницы</a>
     </div>
+<script>
+document.getElementById('saveAnswersBtn').addEventListener('click', function() {
+    let results = "== Ответы из Руководства по отказу от употребления марихуаны и гашиша (https://stopcannabis.github.io) ==\n\n";
+    let allInputs = document.querySelectorAll('input[type="text"], input[type="radio"]');
+    
+    // Перебираем все поля ввода и радиокнопки
+    allInputs.forEach(input => {
+        let labelText = '';
+        let sectionTitle = '';
+        let answer = '';
+        
+        // 1. Определяем заголовок секции для контекста
+        let currentSection = input.closest('section');
+        if (currentSection) {
+            let h2 = currentSection.querySelector('h2');
+            sectionTitle = h2 ? h2.textContent.trim() : 'Неопределенный раздел';
+        }
+
+        // 2. Получаем метку/вопрос для поля
+        if (input.type === 'text') {
+            // Для текстовых полей ищем ближайшую метку или используем aria-label
+            let closestLi = input.closest('li');
+            if (closestLi) {
+                // Если внутри <li>, берем текст из него (до/после поля)
+                labelText = closestLi.textContent.replace(input.value, '').trim();
+            } else if (input.classList.contains('inline')) {
+                // Для inline-полей берем текст из родительского <p> или <li>
+                let parentElement = input.parentNode;
+                labelText = parentElement.textContent.replace(input.value, '').trim();
+            }
+            // Используем aria-label как запасной вариант
+            if (!labelText && input.getAttribute('aria-label')) {
+                labelText = input.getAttribute('aria-label');
+            }
+            
+            // Получаем ответ
+            answer = input.value.trim();
+            if (answer) {
+                results += `[${sectionTitle}] ${labelText || 'Текстовое поле'}: ${answer}\n`;
+            }
+            
+        } else if (input.type === 'radio' && input.checked) {
+            // Для радиокнопок ('Да/Нет' в таблицах)
+            let row = input.closest('tr');
+            if (row) {
+                // Получаем текст симптома из первой колонки
+                let symptomCell = row.querySelector('td:first-child');
+                labelText = symptomCell ? symptomCell.textContent.trim() : 'Вопрос викторины';
+            }
+            
+            // Получаем ответ (Да/Нет)
+            let selectedLabel = row.querySelector(`label[for="${input.id}"]`);
+            answer = selectedLabel ? selectedLabel.textContent.trim() : input.value;
+            
+            results += `[${sectionTitle}] ${labelText}: ${answer}\n`;
+        }
+    });
+
+    // 3. Создаем и скачиваем файл
+    const filename = "stopcannabis.github.io_answers.txt";
+    const blob = new Blob([results], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    
+    // Создаем невидимую ссылку для скачивания
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    
+    // Очищаем
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    alert("Ваши ответы сохранены в файл '" + filename + "'!");
+});
+</script>
 </body>
 </html>
